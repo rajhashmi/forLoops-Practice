@@ -370,3 +370,118 @@ console.log(commonCharactersBetweenTewString(["this","is","javaScript"],["this",
 
 
 //  ============================================== Intermediate concepts Questions ========================================================================
+
+
+// Q31. Write nested for loops to print a pattern of asterisks in the shape of a rectangle.
+
+function rectangle(n){
+    let string = ""
+  for(let i= 0;i<=n;i++){
+    for(let j =0;j<=n*3;j++){
+        string += "* "
+    }
+    string += "\n"
+  }
+  return string
+}
+console.log(rectangle(3));
+
+// Q32. Write nested for loops to print a pattern of numbers in a right-angled triangle.
+
+function printRightAngleTriangleInNum(n){
+    let triangle = "";
+    for(let i = 1;i<=n;i++){
+        for(let j = 1; j<= i;j++){
+            triangle += `${j}`
+        }
+        triangle += "\n"
+    }
+    return triangle
+}
+console.log(printRightAngleTriangleInNum(5));
+
+// Q33. Write nested for loops to print a pattern of letters in a pyramid shape.
+
+
+function pyramidPattern(n){
+    let pyramid = "";
+    for(let i = 0;i<n;i++){
+        
+        for(let j = n-i;j>0;j--){
+            pyramid += " "
+        }
+        for(let j = 0; j<= 2*i;j++){
+            pyramid +="*"
+        }
+        for(let j = n-i;j>0;j--){
+            pyramid += " "
+        }
+
+        pyramid += "\n";
+    }
+    return pyramid
+}
+console.log(pyramidPattern(5));
+
+
+// Q34. Write nested for loops to print a multiplication table from 1 to 10.
+
+function printMultiplication(n){
+    let table = "";
+    for(let i = 1; i<=10;i++){
+       for(let j = 1;j<=n;j++){
+        table += (i*j) + "\t"
+       }
+        table += "\n";
+    }
+    return table
+}
+console.log(printMultiplication(20));
+
+
+// Q35. calculates the sum of consecutive elements in each subarray of the two-dimensional array
+
+function sumOfTwoConsecutiveElements(){
+    let arr = [[1,2],[2,3],[4,3],[5,4],[8,7],[5,1]];
+    let result = [];
+
+    for(let i = 0;i<arr.length;i++){
+        for(let j = 0;j<arr[i].length - 1;j++){
+            result.push(arr[i][j]+arr[i][j+1])
+        }
+    }
+    return result
+}
+console.log(sumOfTwoConsecutiveElements()); //  [ 3, 5, 7, 9, 15, 6 ]
+
+// Q36. Write nested for loops to calculate the sum of elements in a two-dimensional array.
+
+function sumOfAllElInTwoDArray(){
+    let arr = [[1,2],[2,3],[4,3],[5,4],[8,7],[5,1]];
+    let sum = 0;
+    for(let i =0;i<arr.length;i++){
+        for(let j = 0;j < arr[i].length;j++){
+            sum += arr[i][j]
+        }
+    }
+    return sum
+}
+console.log(sumOfAllElInTwoDArray());
+
+// Q37. Write nested for loops to find the maximum element in a two-dimensional array.
+
+function findMaxNumIn2DArr(){
+    let arr = [[1,2],[2,3],[11,3],[5,4],[100,7],[10,1]];
+    let maxNum = -Infinity;
+    for(let i = 0; i<arr.length;i++){
+        for(let j=0;j<arr[i].length;j++){
+            if(arr[i][j] > maxNum ){
+                maxNum = arr[i][j]
+            }
+        }
+    }
+    return maxNum
+}
+console.log(findMaxNumIn2DArr());
+
+

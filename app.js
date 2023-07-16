@@ -236,3 +236,137 @@ function checkIfAllElAreEven(arr){
     return result
 }
 console.log(checkIfAllElAreEven([2,6,8,10]));
+
+// Q21. find the largest element in array.
+
+function largestElement(arr){
+    let result = arr[0];
+    for(let i = 0; i<arr;i++){
+        if(arr[i]> result){
+            result = arr[i]
+        }
+    }
+    return result
+}
+console.log(largestElement(["javaScript","java","c++","kotlin"]));
+
+
+// Q22. Write a for loop to find the maximum and minimum elements in an array.
+
+function findMinAndMax(arr){
+    let minimum = Infinity;
+    let maximum = -Infinity;
+    for(let i=0;i<arr.length;i++){
+        if(minimum > arr[i]){
+            minimum = arr[i]
+        }else if(maximum < arr[i]){
+            maximum = arr[i]
+        }
+    }
+    return `min = ${minimum}, max = ${maximum}`
+}
+console.log(findMinAndMax([4,3,2,5,1]));
+
+// Q23. Write a for loop to convert each element in an array to uppercase.
+
+function convertToUpperCase(arr){
+    let converted = []
+    for(let i = 0; i<arr.length; i++){
+        converted.push(arr[i].toUpperCase())
+    }
+    return converted
+}
+console.log(convertToUpperCase(["javaScript","java","c++","kotlin"]));
+
+// Q24. Write a for loop to concatenate all elements of an array into a single string.
+
+function concatenateAllEl(arr){
+    let string = "";
+    for(let i=0;i<arr.length;i++){
+        string += arr[i]+" ";
+    }
+    return string
+}
+console.log(concatenateAllEl(["javaScript","java","c++","kotlin"]));
+
+// Q25. Write a for loop to find the number of words in a string.
+
+function findTheNumOfWords(str){
+    let counter = 0
+    for(let i = 0;i<str.length;i++){
+        counter++
+    }
+    return counter
+}
+console.log(findTheNumOfWords("this is str"));   //  11
+
+
+
+// Q26. Write a for loop to find the number of uppercase letters in a string.
+
+function findTheNumOfUpperWord(str){
+    let newStr = "";
+    let counter = 0
+    for(let i = 0;i<str.length;i++){
+        if(str[i]!==" " && str[i] === str[i].toUpperCase()){
+            counter++
+        } 
+    }
+    return counter
+}
+console.log(findTheNumOfUpperWord("This Is A String"));
+
+
+// Q27. Write a for loop to find the product of all elements in an array.
+
+function findTheProductOfAlEl(arr){
+    let product = 1;
+    for(let i =0;i<arr.length;i++){
+        product *= arr[i]
+    }
+    return product
+}
+console.log(findTheProductOfAlEl([2,1,3,4,2,5,4]));
+
+// Q28. Write a for loop to find the average of even numbers.   
+
+function findTheAverageOfEvenNum(arr){
+    let result = 0;
+    for(let i =0; i< arr.length;i++){
+        if(arr[i]%2 ==0){
+            result += arr[i]
+        }
+    }
+    return result/arr.length;
+}
+console.log(findTheAverageOfEvenNum([1,2,3,4,5,6,7,8,9,10]));
+
+// Q29. find the missing number from an array 
+
+
+function findTheMissingNumberFromArr(arr){
+   let missingNum = [];
+   for(let i = Math.min(...arr);i<Math.max(...arr);i++){
+    if(!arr.includes(i)){
+        missingNum.push(i)
+    }
+   }
+   return missingNum
+}
+console.log(findTheMissingNumberFromArr([1,3,5,7,9,10]));
+
+// Q30. Write a for loop to print the common characters between two strings.
+
+function commonCharactersBetweenTewString(arr1,arr2){
+    let commonEl = [];
+    for(let i=0;i<arr1.length;i++){
+        if(arr1.includes(arr2[i])){
+            commonEl.push(arr1[i])
+        }
+    }
+    return commonEl
+}
+console.log(commonCharactersBetweenTewString(["this","is","javaScript"],["this","is","js"]));
+
+
+//  ============================================== Intermediate concepts Questions ========================================================================

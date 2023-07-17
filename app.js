@@ -471,9 +471,9 @@ console.log(sumOfAllElInTwoDArray());
 // Q37. Write nested for loops to find the maximum element in a two-dimensional array.
 
 function findMaxNumIn2DArr(){
-    let arr = [[1,2],[2,3],[11,3],[5,4],[100,7],[10,1]];
+    let arr = [[1,2],[2,3],[11,3,101],[5,4],[100,7],[10,1]];
     let maxNum = -Infinity;
-    for(let i = 0; i<arr.length;i++){
+    for(let i = 0; i<arr.length;i++){     // find min
         for(let j=0;j<arr[i].length;j++){
             if(arr[i][j] > maxNum ){
                 maxNum = arr[i][j]
@@ -483,5 +483,88 @@ function findMaxNumIn2DArr(){
     return maxNum
 }
 console.log(findMaxNumIn2DArr());
+
+
+// Q38.  Create a function that takes an array of numbers and return "Boom!" if the digit 7 appears in the array. Otherwise, return "there is no 7 in the array".
+
+function SevenBoom(arr){
+   for(let i=0;i<arr.length;i++){
+    if(arr[i] === 7){
+        return "Boom!"
+    }
+   }
+   return "there is no 7 in the array"
+}
+console.log(SevenBoom([1, 2, 3, 4, 5, 6, 7]));
+
+// Q39. Create an ordered 2D array (matrix). A matrix is ordered if its (0, 0) element is 1, its (0, 1) element is 2, and so on. Your function needs to create an a × b matrix. a is the first argument and b is the second.
+
+function ordered2DArray(a,b){
+    let matrix = [];
+    let counter = 0;   // remove
+    for(let i =0;i<a;i++){
+        matrix[i] = [];
+        for(let j=0;j<b;j++){
+            matrix[i][j] = counter
+            counter++
+        }
+    }
+    return matrix
+
+}
+console.log(ordered2DArray(5,5));
+
+// Q40. Create a function which returns the number of true values there are in an array.
+
+function returnNumberOfTrueVal(val){
+    let counter = 0;
+    for(let i = 0;i<val.length;i++){
+        if(val[i]){
+            counter++
+        }
+    }
+    return counter
+}
+console.log(returnNumberOfTrueVal([]));
+
+
+// Q41. Concatenate Variable Number of Input Arrays
+
+function concatenateVariableEl(...arr){
+    let concatenatedArray = [];
+    for(let i =0;i<arr.length;i++){                 // without spread operator
+        concatenatedArray.push(...arr[i])
+    }
+    return concatenatedArray
+}
+console.log(concatenateVariableEl([1, 2, 3], [4, 5], [6, 7]));
+
+// Q42. Create a function that takes two numbers as arguments (num, length) and returns an array of multiples of num until the array length reaches length.
+
+function arrayOfMultiples(num,length){
+    let result = [];
+    for(let i = num; i<=num*length;i+=num){
+        result.push(i)
+    }
+    return result
+}
+console.log(arrayOfMultiples(5,5));
+
+// Q43. Reverse the Odd Length Words
+
+function reverseOddLengthWords(arr){
+    let convertToArr = arr.split(" ");
+    let result = ""
+    for(let i = 0;i<convertToArr.length;i++){
+       if(convertToArr[i].length%2!=0){
+        result +=  " "+convertToArr[i].split("").reverse().join("")+ " "
+       }else{
+            result += convertToArr[i]
+       }
+    }
+    return result.trim();
+}
+console.log(reverseOddLengthWords(" Reverse the Odd Length Words four"));
+
 
 

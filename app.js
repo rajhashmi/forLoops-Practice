@@ -525,7 +525,7 @@ function returnNumberOfTrueVal(val){
     }
     return counter
 }
-console.log(returnNumberOfTrueVal([]));
+console.log(returnNumberOfTrueVal([1,2,3]));
 
 
 // Q41. Concatenate Variable Number of Input Arrays
@@ -568,3 +568,119 @@ console.log(reverseOddLengthWords(" Reverse the Odd Length Words four"));
 
 
 
+// Q44. Special Arrays
+// An array is special if every even index contains an even number and every odd index contains an odd number. Create a function that returns true if an array is special, and false otherwise.
+
+function SpecialArray(arr){
+    for(let i = 0;i<arr.length;i++){
+        if(i % 2 == 0 && arr[i] % 2 !== 0){
+            return false;
+        }else if(i % 2 !== 0 && arr[i] % 2 === 0){
+            return false;
+        }
+    }
+    return true
+}
+console.log(SpecialArray([2,1,4,3,6,7,8,9,10]));
+
+
+// Q45. Mirror Array
+function MirrorArray(arr){
+    let Mirror = [...arr]
+   for(let i = arr.length - 1;i>=0;i--){
+    Mirror.push(arr[i])
+   }
+    return Mirror
+}
+console.log(MirrorArray([1,2,3,4,5]));
+
+// Q46. Finding Common Elements
+// Create a function that takes two "sorted" arrays of numbers and returns an array of numbers which are common to both the input arrays.
+
+function FindingCommonElement(arr1,arr2){
+    let result = [];
+    for(let i = 0;i<arr1.length;i++){
+        for(let j =0;j<arr2.length;j++){
+          if(arr1[i]===arr2[j]){
+            result.push(arr1[i])
+          }   
+        }
+    }
+    return result
+}
+console.log(FindingCommonElement([-1, 3, 4, 6, 7, 9], [1, 3]));
+
+// Q47. Numbers in Strings
+// Create a function that takes an array of strings and returns an array with only the strings that have numbers in them. If there are no strings containing numbers, return an empty array.
+
+ function NumberInString(arr){
+    let result = [];
+    for(let i =0;i<arr.length;i++){
+       for(let j =0;j<arr[i].length;j++){
+        if(!isNaN(parseInt(arr[i][j]))){
+            result.push(arr[i])
+        }
+       }
+    }
+    return result
+ }
+ console.log(NumberInString(["1a", "a", "2b", "b"]));
+
+//  Q48. Positive Dominant
+// An array is positive dominant if it contains strictly more unique positive values than unique negative values. Write a function that returns true if an array is positive dominant.
+
+function positiveDominant(arr){
+    const uniqueEl = Array.from(new Set(arr));
+    let positive = 0
+    let negative = 0
+    for(let i =0;i<uniqueEl.length;i++){
+       if(uniqueEl[i] > 0){
+        positive++
+       }else if(uniqueEl[i] < 0){
+        negative++
+       }
+    }
+    return positive > negative
+}
+console.log(positiveDominant([1, 2, 3, 1, -3, -4]));
+
+// Q49. Word to Bitstring to Boolean Array
+// Create a function that converts a word to a bitstring and then to a boolean array based on the following criteria:
+
+function convertWordToBitstring(str){
+    let alfa = "abcdefghijklmnopqrstuvwxyz";
+    let result = [];
+    for(let i =0;i<str.length;i++){
+        for(let j =0;j<alfa.length;j++){
+            if(str[i] === alfa[j] && j%2==0){
+               result.push(false)
+            }else if(str[i] === alfa[j] && j%2!==0){
+                result.push(true)
+            }
+        }
+    }
+    return result
+}
+
+ console.log(convertWordToBitstring("cash"));
+
+//  Q50. Broken Keyboard
+// Given what is supposed to be typed and what is actually typed, write a function that returns the broken key(s). The function looks like:
+
+function BrokenKeyboard(correct,Input){
+    let result = [];
+    let i = 0
+    for(let j =0;j<Input.length;j++){
+        if(correct[j]!==Input[j]){
+             const brokenKey = correct[j];
+            if(!result.includes(brokenKey)){
+                result.push(brokenKey)
+            }
+        }else{
+            i++
+        }
+    }
+    return result
+
+}
+console.log(BrokenKeyboard("beethoven", "affthoif5"));

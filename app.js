@@ -669,18 +669,156 @@ function convertWordToBitstring(str){
 
 function BrokenKeyboard(correct,Input){
     let result = [];
-    let i = 0
+  
     for(let j =0;j<Input.length;j++){
         if(correct[j]!==Input[j]){
              const brokenKey = correct[j];
             if(!result.includes(brokenKey)){
                 result.push(brokenKey)
             }
-        }else{
-            i++
         }
     }
     return result
 
 }
 console.log(BrokenKeyboard("beethoven", "affthoif5"));
+
+
+// Q51. All Rotations of a String
+// Create a left rotation and a right rotation function that returns all the left rotations and right rotations of a string.
+
+function LeftRotationsOfString(str){
+    let result = [];
+  
+    for(let i =0;i<str.length;i++){
+      const rotatedStr = str.slice(i) + str.slice(0,i)
+      result.push(rotatedStr);
+    }
+ return result
+}
+console.log(LeftRotationsOfString("abc"));
+
+// Q52. for Right rotation
+
+function RightRotationsOfString(str){
+    let result = [];
+    for(let i = 0;i<str.length;i++){
+        const rotatedStr = str.slice(-i) + str.slice(0,-i);
+        result.push(rotatedStr)
+    }
+    return result
+}
+console.log(RightRotationsOfString("abc"));
+
+
+// Q53. Return the Sum of the Two Smallest Numbers
+// Create a function that takes an array of numbers and returns the sum of the two lowest positive numbers.
+function sumOfSmallestEl(arr) {
+    let sum = 0;
+    let smallest = Infinity;
+    let secondSmallest = Infinity;
+    
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] >= 0) {
+        if (arr[i] < smallest) {
+          secondSmallest = smallest;
+          smallest = arr[i];
+        } else if (arr[i] < secondSmallest) {
+          secondSmallest = arr[i];
+        }
+      }
+    }
+  
+    sum = smallest + secondSmallest;
+    return sum;
+  }
+  
+  console.log(sumOfSmallestEl([10, 343445353, 3453445, 3453545353453])); 
+
+// Q54. Positive Count / Negative Sum
+// Create a function that takes an array of positive and negative numbers. Return an array where the first element is the count of positive numbers and the second element is the sum of negative numbers.
+
+function PositiveCountAndNegativeSum(arr){
+    let negativeSum = 0;
+    let positiveCounter = 0
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i]< 0){
+            negativeSum+=arr[i]
+        }else{
+            positiveCounter++
+        }
+    }
+    return Array(positiveCounter,negativeSum)
+}
+console.log(PositiveCountAndNegativeSum([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, -11, -12, -13, -14, -15]));
+  
+
+// Q55.Sum of Found Indexes
+// Create a function which takes in an array of numbers and a number to find. Return the sum of every index in the array which matches the chosen number.
+
+function SumOfFoundIndexes(arr,target){
+    let sum = 0
+    for(let i =0;i<arr.length;i++){
+        if(arr[i]=== target){
+            sum += i
+        }
+    }
+    return sum
+
+}
+console.log(SumOfFoundIndexes([0,2, 3, 3, 0, 0, 3],2 ));
+
+
+// Q56. Sum of Two Numbers in Array Equal to Given Number
+// Create a function that takes an array of numbers arr and a number n. Return true if the sum of any two elements is equal to the given number. Otherwise, return false.
+
+
+function SumOfGivenNum(arr,target){
+    let result = [];
+    for(let i = 0;i<arr.length;i++){
+        for(let j =0;j<arr.length;j++){
+            if(arr[i]+arr[j]==target){
+                result.push([arr[i],arr[j]])
+                arr.splice(i,1)
+            }
+        }
+    }
+    return result
+}
+console.log(SumOfGivenNum([2,9,8,7,4,3,6],9));
+
+// Q57. Mutations Only: Zeroes to the End
+// Write a function that moves all the zeroes to the end of an array. Do this without returning a copy of the input array.
+
+function moveZeroToEnd(arr){
+  let zeroes = [];
+  for(let i = 0;i<arr.length;i++){
+    if(arr[i]===0){
+        zeroes.push(arr[i]);
+       arr.splice(i, 1);
+       i--;
+    }   
+}
+  arr = arr.concat(zeroes)
+  return arr
+}
+console.log(moveZeroToEnd([0, 0]));
+
+
+ 
+//Q58. Number of Boomerangs
+// A boomerang is a V-shaped sequence that is either upright or upside down. Specifically, a boomerang can be defined as: sub-array of length 3, with the first and last digits being the same and the middle digit being different.
+
+function countBoomerangs(arr){
+    let counter = 0;
+    for(let i =0;i<arr.length - 2;i++){
+        if(arr[i]==arr[i+2] && arr[i]!==arr[i+1]){
+            counter++
+        }
+    }
+    return counter
+}
+console.log(countBoomerangs([4, 4, 4, 9, 9, 9, 9]));
+
+
+

@@ -822,3 +822,149 @@ console.log(countBoomerangs([4, 4, 4, 9, 9, 9, 9]));
 
 
 
+// Q59. Converting One Binary String to Another
+// Write a function that returns the minimum number of swaps to convert the first binary string into the second.
+
+function convertOneBinaryStringToAnother(str1,str2){
+    let swaoCounter = 0;
+    if(str1.length !== str2.length){
+        return "string is not equal"
+    }
+    for(let i =0;i<str1.length;i++){
+        if(str1[i]!==str2[i]){
+            swaoCounter++
+        }
+    }
+    return swaoCounter/2;
+}
+console.log(convertOneBinaryStringToAnother("10011001", "01100110"));
+
+
+// Q60. Frequency Distribution
+// Create a function that returns the frequency distribution of an array. This function should return an object, where the keys are the unique elements and the values are the frequency in which those elements occur.
+
+function FrequencyDistribution(arr){
+    let result = {}
+   for(const element of arr){
+    result[element] = (result[element] || 0) + 1;
+   }
+   return result
+}
+console.log(FrequencyDistribution(["A", "B", "A", "A", "A"]));
+
+
+// Q61 Disarium Number
+// A number is said to be Disarium if the sum of its digits raised to their respective positions is the number itself.
+
+function isDisariumNumber(arr){
+    let convert = arr.toString()
+    let sum = 0;
+    for(let i =0;i<convert.length;i++){
+        console.log(sum);
+        sum += parseInt(convert[i]**(i+1))
+    }if(sum==arr){
+        return true
+    }
+    return false
+}
+console.log(isDisariumNumber(135));
+
+// Q62. Convert "Zero" and "One" to "1" and "0"
+
+function zeroAndOne(str){
+    let arr = str.toLowerCase().split(" ");
+    let result = ""
+    console.log(arr);
+    for(let i = 0 ;i<arr.length;i++){
+        if(arr.length - 1 < 8 ){
+            return result
+        }else if(arr[i] == "one"){
+            result+= 1
+        }else{
+            result += 0
+        }
+    }
+    return result
+}
+console.log(zeroAndOne("zero one zero one zero one zero three"));
+
+// Q63. Two Distinct Elements
+// In each input array, every number repeats at least once, except for two. Write a function that returns the two unique numbers.
+
+function DistinctElements(arr){
+    let result = [];
+ 
+    for(let i =0; i< arr.length;i++){
+        let isDisarium = true;
+        for(let j = 0;j<arr.length;j++){
+            if(i !== j && arr[i] === arr[j]){
+                isDisarium = false;
+                break;
+            }
+        }
+        if(isDisarium){
+            result.push(arr[i])
+        }
+    }
+    return result
+}
+console.log(DistinctElements([5, 5, 2, 4, 4, 4, 9, 9, 9, 1]));
+
+// Q64. Vowel to Vowel Links
+// Given a sentence as str, return true if any two adjacent words have this property: One word ends with a vowel, while the word immediately after begins with a vowel (a e i o u).
+
+function vowelToVowelLinks(str){
+    let vowel = "aeiou";
+    let arr = str.toLowerCase().split(" ");
+    for(let i =0; i<arr.length - 1;i++){
+        if( vowel.includes(arr[i].charAt(arr[i].length - 1)) &&
+            vowel.includes(arr[i + 1].charAt(0))
+            ){
+                return true;
+        }
+    }
+    return false
+}
+console.log(vowelToVowelLinks("a very large appliance"));
+
+
+// Q65. Find First Character That Repeats
+// Create a function that takes a string and returns the first character that repeats. If there is no repeat of a character, return "-1".
+
+function findFirstLetter(str){
+    for(let i = 0;i<str.length;i++){
+        for(let j =0; j<str.length;j++){
+            if(i!==j && str[i] === str[j]){
+                
+                return str[i]
+            
+            }
+        }
+    }
+    return -1
+}
+console.log(findFirstLetter("Isildur"));
+
+
+// Q66. Count the Lone Ones
+// Create a function which counts how many lone 1s appear in a given number. Lone means the number doesn't appear twice or more in a row.
+function CountTheLoneOnes(num) {
+    let arr = num.toString().split("");
+    let counter = 0;
+    
+    for (let i = 0; i < arr.length; i++) {
+        const currentDigit = arr[i];
+        const previousDigit = arr[i - 1];
+        const nextDigit = arr[i + 1];
+        
+        if (currentDigit === "1" && (previousDigit !== "1" && nextDigit !== "1")) {
+            counter++;
+        }
+    }
+    
+    return counter;
+}
+
+console.log(CountTheLoneOnes(1211));
+
+

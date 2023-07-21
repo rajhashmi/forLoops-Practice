@@ -968,3 +968,93 @@ function CountTheLoneOnes(num) {
 console.log(CountTheLoneOnes(1211));
 
 
+// Q67.What's the Missing Letter?
+// Given a string of letters in the English alphabet, return the letter that's missing from the string. The missing letter will make the string be in alphabetical order (from A to Z).
+
+function findMissingLetter(str){
+    let alfaArr = [
+        'a', 'b', 'c', 'd', 'e', 'f',
+        'g', 'h', 'i', 'j', 'k', 'l',
+        'm', 'n', 'o', 'p', 'q', 'r',
+        's', 't', 'u', 'v', 'w', 'x',
+        'y', 'z'
+      ];
+    let arr = str.split("");
+    let StartIndex = alfaArr.indexOf(arr[0]);
+    for(let i = 0;i< arr.length;i++){
+        if(arr[i]!==alfaArr[StartIndex+i]){
+        return alfaArr[StartIndex + i]
+        }
+
+    }
+   
+}
+console.log(findMissingLetter("abdefg"));
+
+// Q68.  Case and Index Inverter
+// Write a function that takes a string input and returns the string in a reversed case and order.
+
+function reverseStrAndOrder(str){
+    let uppercase = str.toUpperCase();
+    let LowerCase = str.toLowerCase();
+    let result = "";
+    for(let i = str.length - 1;i>= 0;i--){
+        if(str[i]=== uppercase[i]){
+            result += LowerCase[i]
+        }else if (str[i]=== LowerCase[i]){
+            result += uppercase[i]
+        }
+    }
+    return result
+    
+}
+console.log(reverseStrAndOrder("heLLo hoW ArE"));
+
+ 
+// Q69. All About Strings
+
+function AllAboutString(str){
+    let result = []
+    let length = str.length;
+    let middleEl;
+    let secondOcur = ""
+    
+    if(length%2==1){
+        const middleIndex = Math.floor(length/2);
+        middleEl = str[middleIndex]
+        
+    }else {
+        const middleIndex = length / 2 - 1;
+        middleEl = str.slice(middleIndex,middleIndex + 2);
+    }
+    for(let i = 2;i<str.length;i++){
+        if(str[1] === str[i]){
+            secondOcur = `@ index ${i}`
+        }else{
+            secondOcur = "not found"
+        }
+    }
+     result.push(length,str[0],str[str.length - 1],middleEl,secondOcur)
+    return result
+     
+}
+console.log(AllAboutString("LASA"));
+
+
+//  Q70. Beginning and End Pairs
+// Write a function that pairs the first number in an array with the last, the second number with the second to last, etc.
+
+
+function BeginningAndEndPair(arr) {
+    let result = [];
+    let reverseIndex = arr.length - 1;
+
+    for (let i = 0; i < Math.ceil(arr.length / 2); i++) {
+        result.push([arr[i], arr[reverseIndex]]);
+        reverseIndex--;
+    }
+
+    return result;
+}
+
+console.log(BeginningAndEndPair([1, 2, 3, 4, 5, 6]));

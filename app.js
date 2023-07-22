@@ -1055,6 +1055,109 @@ function BeginningAndEndPair(arr) {
     }
 
     return result;
+} 
+// Q71. Write a function to find the sum of all elements in a 2D array. 
+
+function sumOf2DArr(arr){
+  let sum = 0;
+  for(let i =0;i<arr.length;i++){
+    for(let j = 0;j<arr[i].length;j++){
+        sum += arr[i][j]
+    }
+  }
+  return sum
 }
 
-console.log(BeginningAndEndPair([1, 2, 3, 4, 5, 6]));
+console.log(sumOf2DArr([[1, 2, 3],[4, 5, 6],[7, 8, 9]]));
+
+
+// Q72. Given a matrix, find the sum of each row and store the results in an array.
+
+function sumOfRow(arr){
+    let sumOfRows = [];
+    for(let i = 0;i<arr.length;i++){
+        let sum = 0;
+        for(let j = 0; j< arr[i].length;j++){
+            sum+= arr[i][j]
+        }
+        sumOfRows.push(sum)
+    }
+    return sumOfRows
+}
+console.log(sumOfRow([[1, 2, 3],[4, 5, 6],[7, 8, 9]]));
+
+// Q73. Given a matrix, find the sum of each column and store the results in an array.
+
+function findSumOfColums(arr){
+    let sumOfColums = [];
+    for(let i = 0; i<arr.length;i++){
+        let sum = 0;
+        for(let j =0;j<arr[i].length;j++){
+            sum += arr[j][i]
+     
+        }
+        sumOfColums.push(sum)
+    }
+    return sumOfColums
+}
+console.log(findSumOfColums([[1, 2, 3],[4, 5, 6],[7, 8, 9]]));
+
+
+// Q74. Given an array of arrays, flatten it into a single-dimensional array.
+
+function flattenArray(arr){
+    const flattened = [];
+
+    function flattenHelper(array){
+        for(let i = 0; i< array.length;i++){
+            if(Array.isArray(array[i])){
+                flattenHelper(array[i]);
+            }else{
+                flattened.push(array[i])
+            }
+        }
+    }
+    flattenHelper(arr)
+    return flattened
+}
+console.log(flattenArray([[1, 2, 3], [4, 5, 6], [7, 8, 9, [1, 2, 3,[3,2,[4,3]]]]]));
+
+
+// Q75. Given a 2D array, find the elements that are common in all rows.
+
+function findCommonElAllRows(arr){
+    let commonEl = [];
+   for(let element of arr[0]){
+    let isCommon = true
+   
+    for(let i = 1; i <arr.length;i++){
+        if(!arr[i].includes(element)){
+            isCommon = false;
+            break;
+        }
+    }
+    if(isCommon){
+        commonEl.push(element)
+    }
+   }
+   return commonEl
+}
+console.log(findCommonElAllRows([[1, 2, 3],[4, 5, 2],[2, 8, 9]]));
+
+// Q76.  Write a function to find the second-largest element in a 2D array.
+
+function secondLargest(arr){
+    let result = [];
+    for(let i =0;i<arr.length ;i++){
+       let maxNum = -Infinity;
+       for(let j =0;j< arr[i].length;j++){
+       if(maxNum<arr[i][j]){
+        maxNum = arr[i][j]
+      
+       }
+       }
+      
+    }
+    return result
+}
+console.log(secondLargest([[1, 2, 3],[4, 5, 2],[2, 8, 9]]));
